@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Session 4</string>
+    <string name="action_clear">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="words_fragment_label">Words</string>
+    <string name="add_word_fragment_label">Add Word</string>
+    <string name="save">Save</string>
+
+    <string name="enter_your_word">Enter your word</string>
+</resources>
