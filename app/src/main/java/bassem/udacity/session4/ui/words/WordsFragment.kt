@@ -2,8 +2,10 @@ package bassem.udacity.session4.ui.words
 
 import android.os.Bundle
 import android.view.*
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import bassem.udacity.session4.R
 import bassem.udacity.session4.WordsApplication
@@ -34,14 +36,15 @@ class WordsFragment : Fragment() {
         adapter = WordAdapter()
 
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        addMenu()
+
         with(binding) {
-            viewModel.words.observe(viewLifecycleOwner){
+            viewModel.words.observe(viewLifecycleOwner) {
                 adapter.submitList(it)
             }
             fab.setOnClickListener {
@@ -50,6 +53,19 @@ class WordsFragment : Fragment() {
 
             recyclerviewWords.adapter = adapter
         }
+    }
+
+    private fun addMenu() {
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) =
+                menuInflater.inflate(R.menu.menu_main, menu)
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean =
+                if (menuItem.itemId == R.id.action_delete_all) {
+                    viewModel.deleteAll()
+                    true
+                } else false
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 
     override fun onDestroyView() {

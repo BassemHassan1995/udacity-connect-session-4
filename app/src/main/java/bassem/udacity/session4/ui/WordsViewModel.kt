@@ -12,14 +12,16 @@ class WordsViewModel constructor(private val repository: WordsRepository) : View
 
     val words: LiveData<List<Word>> = repository.getWordsList()
 
-    fun addWord(word: Word) = viewModelScope.launch {
-        repository.addWord(word)
+    fun addWord(word: Word) {
+        viewModelScope.launch {
+            repository.addWord(word)
+        }
     }
 
-    //TODO: Add later
-    fun deleteAll(){
-
-
+    fun deleteAll() {
+        viewModelScope.launch {
+            repository.deleteAll()
+        }
     }
 
 }
