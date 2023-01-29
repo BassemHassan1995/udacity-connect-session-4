@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/AddWordFragment"
-        android:name="bassem.udacity.session4.ui.addword.AddWordFragment"
+        android:name="bassem.udacity.session4.ui.add_word.AddWordFragment"
         android:label="@string/add_word_fragment_label"
         tools:layout="@layout/fragment_add_word">
 

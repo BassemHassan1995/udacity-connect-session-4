@@ -1,4 +1,4 @@
-package bassem.udacity.session4.ui.addword
+package bassem.udacity.session4.ui.add_word
 
 import android.os.Bundle
 import android.view.LayoutInflater
